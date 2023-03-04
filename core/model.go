@@ -1,10 +1,8 @@
 package core
 
 import (
-	"go/riada/config"
+	// "go/riada/config"
 	"time"
-
-	"gorm.io/gorm"
 )
 
 type Model struct {
@@ -13,6 +11,6 @@ type Model struct {
 	UpdatedAt time.Time `json:"updatedAt,omitempty"`
 }
 
-func (m *Model) Db() *gorm.DB {
-	return config.Db()
-}
+// func (m *Model) Db() *gorm.DB {
+// 	return config.Db()
+// }

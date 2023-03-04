@@ -1,14 +1,14 @@
 package database
 
 import (
-	"go/riada/config"
+	"go/riada/connection"
 	"go/riada/models"
 	"log"
 )
 
 func Migrate() {
 	log.Printf("Migrate: Start ...")
-	db := config.Db()
+	db := connection.Db()
 	db.AutoMigrate(
 		&models.Ministry{},
 		&models.TypeDoc{},

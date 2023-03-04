@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	config.Server()
-	database.Migrate()
 
+	database.Migrate()
+	config.Server()
 }
