@@ -6,7 +6,7 @@
     <code>
         DB_HOST=myDbhost
         DB_USER=myDbuser
-        DB_PASSWORD=myPassword
+        DB_PASSWORD=myDbPassword
         DB_NAME=myDbName  
         SERVER_PORT=serverPort //3003 by default 
     </code>
