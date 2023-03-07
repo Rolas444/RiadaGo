@@ -1,0 +1,12 @@
+{
+    "sexes":[
+        {
+            "name": "Male",
+            "short_name": "M"
+        },
+        {
+            "name":"Female",
+            "short_name":"F"
+        }
+    ]
+}
