@@ -1,0 +1,22 @@
+{
+    "type_docs":[{
+        "name":"DNI",
+        "desc":"Identity Document Number"
+    },{
+        "name": "LI",
+        "desc":"Electoral Librety"
+    },
+    {
+        "name":"CE",
+        "desc":"Foreigner Card"
+    },
+    {
+        "name":"RUC",
+        "desc":"Single Taxpayer Registry"
+    },
+    {
+        "name":"Passport",
+        "desc":"Passport Number"
+    }
+    ]
+}

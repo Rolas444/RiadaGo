@@ -1,14 +1,15 @@
 package database
 
 import (
-	"go/riada/connection"
 	"go/riada/models"
 	"log"
+
+	"gorm.io/gorm"
 )
 
-func Migrate() {
+func Migrate(db *gorm.DB) {
 	log.Printf("Migrate: Start ...")
-	db := connection.Db()
+	// db := connection.Db()
 	db.AutoMigrate(
 		&models.Ministry{},
 		&models.TypeDoc{},

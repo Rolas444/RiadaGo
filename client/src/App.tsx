@@ -1,13 +1,24 @@
 import { useState } from 'react'
 import './App.css'
+import { Helmet } from 'react-helmet'
+import { useCommonStore } from './stores/commonStore'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { theme } = useCommonStore((state)=>({
+    theme: state.theme
+  }));
+  
 
   return (
-    <div className="App">
-      <h3>Riada</h3>
-    </div>
+    <>
+      <Helmet htmlAttributes={theme?{'data-theme':'light'}:{'data-theme':'dark'} } >
+        <title>Riada Go</title>
+      </Helmet>
+      <div className="container">
+
+      </div>
+    </>
+
   )
 }
 

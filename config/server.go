@@ -23,6 +23,7 @@ func Server() {
 	})
 
 	routes.MinistryRoutes(app)
+	// routes.SetSeeds(app)
 
 	app.Get("/user", func(c *fiber.Ctx) error {
 		return c.SendString("usuarios")
