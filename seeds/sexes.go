@@ -48,9 +48,10 @@ func SetSexes(db *gorm.DB) {
 		if err := db.Create(&nsexes); err != nil {
 			fmt.Println(err)
 		}
+
 		fmt.Println("created sexes successfully")
 
 	}
 
-	fmt.Println(dbSex)
+	fmt.Println("sexes found")
 }
