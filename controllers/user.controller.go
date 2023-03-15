@@ -2,10 +2,12 @@ package controllers
 
 import (
 	"errors"
+	"fmt"
 	"go/riada/connection"
 	"go/riada/models"
 	"go/riada/utils/authentication"
-	"go/riada/utils/sessionjwt"
+	"net/http"
+	"strconv"
 
 	"github.com/go-passwd/validator"
 	"github.com/gofiber/fiber/v2"
@@ -26,25 +28,39 @@ type UserResponse struct {
 
 func LoginUser(c *fiber.Ctx) error {
 	user := new(UserLogin)
-	var userbd models.User
+	var userdb models.User
 
 	if err := c.BodyParser(&user); err != nil {
 		return c.Status(400).JSON(&err)
 	}
 	// fmt.Println(user)
 	db := connection.Db()
-	db.Where(&models.User{UserName: user.UserName}).First(&userbd)
-	err := authentication.VerifyPass(userbd.Password, user.Password)
+	db.Where(&models.User{UserName: user.UserName}).First(&userdb)
+	err := authentication.VerifyPass(userdb.Password, user.Password)
 	if err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	session, err := sessionjwt.SignedLoginToken(&userbd)
+	// session, err := sessionjwt.SignedLoginToken(&userbd)
+	// if err != nil {
+	// 	return c.Status(400).JSON(err.Error())
+	// }
+
+	token, err := authentication.NewToken(strconv.Itoa(int(userdb.ID)), userdb.UserName, user.Remember)
 	if err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
+	ur := new(UserResponse)
+	ur.Id = userdb.ID
+	ur.UserName = userdb.UserName
+	ur.Role = userdb.Role
+	ur.login = true
 
-	return c.Status(200).JSON(session)
+	return c.Status(http.StatusOK).
+		JSON(fiber.Map{
+			"user":  ur,
+			"token": fmt.Sprintf(token),
+		})
 }
 
 func CreateUser(c *fiber.Ctx) error {
