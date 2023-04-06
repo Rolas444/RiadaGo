@@ -21,9 +21,7 @@ func CreateMinistry(c *fiber.Ctx) error {
 }
 
 func GetMinistries(c *fiber.Ctx) error {
-	// var roles []string
-	// roles[0]="user"
-	// roles[1]="admin"
+	// define allowed roles
 	roles := [3]string{"user", "other"}
 	auth, err := Auth(c, roles)
 	if err != nil {

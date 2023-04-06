@@ -17,7 +17,7 @@ function Navbar() {
         if(user.login===false){
             navigate('/login')
         }
-    })
+    },[])
 
     const ChangeTheme=(e: React.FormEvent<HTMLAnchorElement>)=>{
         e.preventDefault();
