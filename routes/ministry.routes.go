@@ -10,7 +10,5 @@ func MinistryRoutes(router *fiber.App) {
 
 	ministry := router.Group("/ministry")
 	ministry.Post("/", controllers.CreateMinistry)
-	ministry.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("ministries")
-	})
+	ministry.Get("/", controllers.GetMinistries)
 }

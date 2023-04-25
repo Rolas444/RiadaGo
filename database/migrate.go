@@ -17,6 +17,7 @@ func Migrate(db *gorm.DB) {
 		&models.Fellow{},
 		&models.Address{},
 		&models.Comunity{},
+		&models.User{},
 	)
 	log.Printf("Migrate: Finished")
 

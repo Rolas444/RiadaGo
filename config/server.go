@@ -18,16 +18,7 @@ func Server() {
 
 	app.Static("/", "./client/dist")
 
-	app.Use("/api", func(c *fiber.Ctx) error {
-		return c.Next()
-	})
-
-	routes.MinistryRoutes(app)
-	// routes.SetSeeds(app)
-
-	app.Get("/user", func(c *fiber.Ctx) error {
-		return c.SendString("usuarios")
-	})
+	routes.AllRoutes(app)
 
 	// database.Migrate()
 
